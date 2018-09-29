@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
+        <link rel="shortcut icon" href="imagens/bambam.png" type="image/x-icon" />
         <meta charset="utf-8">
         <link rel="stylesheet" href="frameworks/bootstrap.min.css">
         <link rel="stylesheet" href="index.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title></title>
+         <meta name="description" content="Pomodoro Timer construido com Vue.js e um toque de memes.">
+        <title >Pomodoro Birl!</title>
+
+        <style media="screen">
+            .img {
+                border-style: solid;
+                border-color: #66ffcc;
+                border-width: 5px;
+            }
+        </style>
+
     </head>
-    <body>
+    <body style="background-color: #001f3f;">
         <div id="app">
 
-
             <div class="container-fluid">
+                <br>
                 <div class="row">
-                    <img src="" alt="">
+                    <img class=" img rounded-circle mx-auto" style="background-color: #dddddd;" height="125px;" src="imagens/bambam.png" alt="">
+                </div>
+                <br>
+                <div class="row">
+                    <h1 class="mx-auto text-light">Pomodoro Birl!</h1>
                 </div>
                 <div class="row">
                     <div class="btn-group mx-auto" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-secondary" v-on:click="setFocar">Focar</button>
-                        <button type="button" class="btn btn-secondary" v-on:click="setDescansar">Descansar</button>
-                        <button type="button" class="btn btn-secondary" v-on:click="setDescansoLongo">Descanso Longo</button>
+                        <button type="button" class="btn btn-info" v-on:click="setFocar">Focar</button>
+                        <button type="button" class="btn btn-info" v-on:click="setDescansar">Descansar</button>
+                        <button type="button" class="btn btn-info" v-on:click="setDescansoLongo">Descanso longo</button>
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <h1 class="mx-auto" style="font-size:70px;" >{{ Math.trunc(time/60) }}:{{ time%60 }}</h1>
+                    <h1 class="mx-auto text-light" style="font-size:70px;" ><span v-show="Math.trunc(time/60) < 10">0</span>{{ Math.trunc(time/60) }}:{{ time%60 }}<span v-show="time%60 < 10">0</span></h1>
                 </div>
                 <div class="row">
                     <div class="btn-group mx-auto" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-secondary" v-on:click="iniciar">Iniciar</button>
-                        <button type="button" class="btn btn-secondary" v-on:click="pause">Pausar</button>
-                        <button type="button" class="btn btn-secondary" v-on:click="reset">Resetar</button>
+                        <button type="button" class="btn btn-success" v-on:click="iniciar">Iniciar</button>
+                        <button type="button" class="btn btn-warning" v-on:click="pause">Pausar</button>
+                        <button type="button" class="btn btn-danger" v-on:click="reset">Resetar</button>
                     </div>
                 </div>
             </div>
