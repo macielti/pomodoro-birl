@@ -39,7 +39,10 @@
                 </div>
                 <br>
                 <div class="row">
-                    <h1 class="mx-auto text-light" style="font-size:70px;" ><span v-show="Math.trunc(time/60) < 10">0</span>{{ Math.trunc(time/60) }}:{{ time%60 }}<span v-show="time%60 < 10">0</span></h1>
+                    <p class="h4 mx-auto text-light">{{message}}</p>
+                </div>
+                <div class="row">
+                    <h1 class="mx-auto text-light" style="font-size:70px;" ><span v-show="Math.trunc(time/60) < 10">0</span>{{ Math.trunc(time/60) }}:<span v-show="time%60 < 10">0</span>{{ time%60 }}</h1>
                 </div>
                 <div class="row">
                     <div class="btn-group mx-auto" role="group" aria-label="Basic example">
@@ -47,6 +50,37 @@
                         <button type="button" class="btn btn-warning" v-on:click="pause">Pausar</button>
                         <button type="button" class="btn btn-danger" v-on:click="reset">Resetar</button>
                     </div>
+                </div>
+                <br>
+                <div class="row">
+                    <button type="button" class="btn btn-secundary mx-auto" v-on:click="showHistorico = !showHistorico">Mostrar/Esconder Histórico</button>
+                </div>
+                <br>
+                <div class="row col-sm-4 col-md-6 col-lg-6 mx-auto" v-if="showHistorico && pomodoros.length > 0">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Hora e Data (Término)</th>
+                                <th scope="col">Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="pomodoro in pomodoros">
+                                <td>{{pomodoro.datetime}}</td>
+                                <td>{{pomodoro.mode === 0? "Focar":pomodoro.mode == 1? "Descansar":"Descanso Longo"}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row" v-if="showHistorico && pomodoros.length == 0">
+                   <p class="text-light mx-auto h5">Histórico Vazio...</p>
+                </div>
+                <div class="row" v-if="showHistorico && pomodoros.length > 0">
+                    <button type="button" class="btn btn-danger mx-auto" v-on:click="limparHistorico">Limpar Histórico</button>
+                </div>
+                <br>
+                <div class="row">
+                    <p class="mx-auto text-light">Desenvolvido com muito ♥ por <a class="text-warning" href="https://github.com/macielti">Bruno do Nascimento Maciel</a>.</p>
                 </div>
             </div>
 
